@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import ru.netology.domain.Book;
 import ru.netology.domain.Product;
 import ru.netology.domain.Smartphone;
+import ru.netology.manager.ProductManager;
 import ru.netology.repository.NotFoundException;
 import ru.netology.repository.ProductRepository;
 
@@ -16,7 +17,7 @@ class ProductRepositoryTest {
     Smartphone smartphone2 = new Smartphone("Игровая подстанция 5", 60, 300, "Кони");
 
     @Test
-    void test1ProductRepositoryRemove() {
+    void test1Remove() {
         ProductRepository repo = new ProductRepository(); // Подготовительное действие.
         repo.save(book1);
         repo.save(book2);
@@ -32,7 +33,7 @@ class ProductRepositoryTest {
     }
 
     @Test
-    void test2ProductRepositoryRemove() {
+    void test2Remove() {
         ProductRepository repo = new ProductRepository();
         repo.save(book1);
         repo.save(book2);
@@ -48,7 +49,7 @@ class ProductRepositoryTest {
     }
 
     @Test
-    void test3ProductRepositoryRemove() {
+    void test3Remove() {
         ProductRepository repo = new ProductRepository();
         repo.save(book1);
         repo.save(book2);
@@ -64,7 +65,7 @@ class ProductRepositoryTest {
     }
 
     @Test
-    void test4ProductRepositoryRemove() {
+    void test4Remove() {
         ProductRepository repo = new ProductRepository();
         repo.save(book1);
         repo.save(book2);
@@ -80,7 +81,7 @@ class ProductRepositoryTest {
     }
 
     @Test
-    void test5ProductRepositoryRemove() {
+    void test5Remove() {
         ProductRepository repo = new ProductRepository();
         repo.save(book1);
         repo.save(book2);
@@ -97,7 +98,7 @@ class ProductRepositoryTest {
     }
 
     @Test
-    void test6ProductRepositoryRemove() {
+    void test6Remove() {
         ProductRepository repo = new ProductRepository();
         repo.save(book1);
         repo.save(book2);
@@ -116,7 +117,7 @@ class ProductRepositoryTest {
     }
 
     @Test
-    void test7ProductRepositoryRemove() {
+    void test7Remove() {
         ProductRepository repo = new ProductRepository();
         repo.save(book1);
         repo.save(book2);
@@ -131,7 +132,7 @@ class ProductRepositoryTest {
     }
 
     @Test
-    void test8ProductRepositoryFindById() {
+    void test1FindById() {
         ProductRepository repo = new ProductRepository();
         repo.save(book1);
         repo.save(book2);
@@ -144,7 +145,7 @@ class ProductRepositoryTest {
     }
 
     @Test
-    void test9ProductRepositoryFindById() {
+    void test2FindById() {
         ProductRepository repo = new ProductRepository();
         repo.save(book1);
         repo.save(book2);
@@ -156,4 +157,33 @@ class ProductRepositoryTest {
         });
     }
 
+    @Test
+    public void test1FindElements() {
+        ProductManager manager = new ProductManager();
+        manager.add(book1);
+        manager.add(book2);
+        manager.add(smartphone1);
+        manager.add(smartphone2);
+
+        Product[] actual = manager.findByQuery("ин");
+        Product[] expected = {book1, book2};
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void test2FindElements() {
+        ProductManager manager = new ProductManager();
+        manager.add(book1);
+        manager.add(book2);
+        manager.add(smartphone1);
+        manager.add(smartphone2);
+
+        Product[] actual = manager.findByQuery("сон");
+        Product[] expected = {};
+
+        assertArrayEquals(expected, actual);
+    }
+
 }
+

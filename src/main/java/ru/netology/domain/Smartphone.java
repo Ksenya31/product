@@ -10,7 +10,8 @@ public class Smartphone extends Product {
         this.producer = producer;
     }
 
-    @Override
+
+ @Override
     public boolean matches(String query) {
         if (super.matches(query)) {
             return true;

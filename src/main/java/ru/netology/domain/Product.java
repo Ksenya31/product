@@ -1,13 +1,17 @@
 package ru.netology.domain;
-public class Product {
-    protected String name; //Protected - Дает доступ всем из того же самого пакета + НАСЛЕДНИКАМ.
+public abstract class Product {
+    protected String name;
     protected int id;
-    protected int cost; //Стоимость.
+    protected int cost;
 
     public Product(String name, int id, int cost) { //<-Конструктор.
         this.name = name;
         this.id = id;
         this.cost = cost;
+    }
+
+        public int getId() {
+        return id;
     }
 
 
@@ -18,9 +22,7 @@ public class Product {
             return false;
         }
     }
-
-    public int getId() {
-        return id;
-    }
 }
+
+
 

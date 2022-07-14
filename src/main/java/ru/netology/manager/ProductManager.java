@@ -15,11 +15,11 @@ public class ProductManager {
         subject = tmp;
     }
 
-    public Product[] findByQuery(String queary) { //Метод поиска.
+    public Product[] findByQuery(String text) { //Метод поиска.
         Product[] result = new Product[0];
 
         for (Product product : subject) {
-            if (product.matches(queary)) {
+            if (product.matches(text)) {
                 Product[] tmp = new Product[result.length + 1];
                 for (int i = 0; i < result.length; i++) {
                     tmp[i] = result[i];

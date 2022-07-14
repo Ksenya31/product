@@ -1,19 +1,16 @@
 package ru.netology.domain;
 
-public class Book extends Product { // extends - Расширяет. Скопирует все с Product в Book.
+public class Book extends Product {
+    protected String author;
 
-    public String author;
-
-    public Book(String name, int id, int cost, String author) { //<-Конструктор.
-        super(name, id, cost);// Вызывай конструктор моего отца с параметрами (.......).
+    public Book(String name, int id, int cost, String author) {
+        super(name, id, cost);
         this.author = author;
     }
 
-    @Override
+      @Override
     public boolean matches(String query) {
-        /*if (name.contains(query)) {
-            return true;
-        }*/
+
         if (super.matches(query)) { //super. - Вызови методв в версии которая мне пришла в наследство.
             return true;
         }
@@ -22,7 +19,5 @@ public class Book extends Product { // extends - Расширяет. Скопи�
             return true;
         }
         return false;
-    }
+    }}
 
-
-}
