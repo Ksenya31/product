@@ -1,4 +1,4 @@
-package ru.netology.domain;
+package ru.netology;
 
 public class Book extends Product {
     protected String author;
@@ -8,10 +8,10 @@ public class Book extends Product {
         this.author = author;
     }
 
-      @Override
+    @Override
     public boolean matches(String query) {
 
-        if (super.matches(query)) { //super. - Вызови методв в версии которая мне пришла в наследство.
+        if (super.matches(query)) {
             return true;
         }
 
@@ -19,5 +19,6 @@ public class Book extends Product {
             return true;
         }
         return false;
-    }}
+    }
+}
 

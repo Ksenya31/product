@@ -1,12 +1,11 @@
 package repository;
 
 import org.junit.jupiter.api.Test;
-import ru.netology.domain.Book;
-import ru.netology.domain.Product;
-import ru.netology.domain.Smartphone;
-import ru.netology.manager.ProductManager;
-import ru.netology.repository.NotFoundException;
-import ru.netology.repository.ProductRepository;
+import ru.netology.Book;
+import ru.netology.Product;
+import ru.netology.Smartphone;
+import ru.netology.ProductManager;
+import ru.netology.ProductRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,13 +17,13 @@ class ProductRepositoryTest {
 
     @Test
     void test1Remove() {
-        ProductRepository repo = new ProductRepository(); // Подготовительное действие.
+        ProductRepository repo = new ProductRepository();
         repo.save(book1);
         repo.save(book2);
         repo.save(smartphone1);
         repo.save(smartphone2);
 
-        repo.removeById(505); //Тестируемое действие.
+        repo.removeById(505);
 
         Product[] actual = repo.findAll();
         Product[] expected = {book2, smartphone1, smartphone2};
@@ -131,31 +130,6 @@ class ProductRepositoryTest {
         assertArrayEquals(expected, actual);
     }
 
-    @Test
-    void test1FindById() {
-        ProductRepository repo = new ProductRepository();
-        repo.save(book1);
-        repo.save(book2);
-        repo.save(smartphone1);
-        repo.save(smartphone2);
-
-        assertThrows(NotFoundException.class, () -> {
-            repo.removeById(10);
-        });
-    }
-
-    @Test
-    void test2FindById() {
-        ProductRepository repo = new ProductRepository();
-        repo.save(book1);
-        repo.save(book2);
-        repo.save(smartphone1);
-        repo.save(smartphone2);
-
-        assertThrows(NotFoundException.class, () -> {
-            repo.removeById(504);
-        });
-    }
 
     @Test
     public void test1FindElements() {

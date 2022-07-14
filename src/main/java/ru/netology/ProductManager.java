@@ -1,12 +1,12 @@
-package ru.netology.manager;
+package ru.netology;
 
-import ru.netology.repository.ProductRepository;
-import ru.netology.domain.Product;
+import ru.netology.ProductRepository;
+import ru.netology.Product;
 
 public class ProductManager {
     private Product[] subject = new Product[0];
 
-    public void add(Product product) { //Метод добавления.
+    public void add(Product product) {
         Product[] tmp = new Product[subject.length + 1];
         for (int i = 0; i < subject.length; i++) {
             tmp[i] = subject[i];
@@ -15,7 +15,7 @@ public class ProductManager {
         subject = tmp;
     }
 
-    public Product[] findByQuery(String text) { //Метод поиска.
+    public Product[] findByQuery(String text) {
         Product[] result = new Product[0];
 
         for (Product product : subject) {

@@ -1,5 +1,6 @@
-package ru.netology.domain;
-import ru.netology.domain.Product;
+package ru.netology;
+
+import ru.netology.Product;
 
 public class Smartphone extends Product {
 
@@ -11,7 +12,7 @@ public class Smartphone extends Product {
     }
 
 
- @Override
+    @Override
     public boolean matches(String query) {
         if (super.matches(query)) {
             return true;
