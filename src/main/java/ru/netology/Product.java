@@ -12,8 +12,8 @@ public abstract class Product {
     }
 
     public int getId() {
-        return id;
-    }
+     return id;
+   }
 
 
     public boolean matches(String query) {

@@ -1,23 +1,49 @@
 package repository;
 
 import org.junit.jupiter.api.Test;
-import ru.netology.Book;
-import ru.netology.Product;
-import ru.netology.Smartphone;
-import ru.netology.ProductManager;
-import ru.netology.ProductRepository;
+import ru.netology.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ProductRepositoryTest {
+class ProductTest {
+    ProductManager manager = new ProductManager();
+    ProductRepository repo = new ProductRepository();
     Book book1 = new Book("Властелин колец", 505, 250, "Дж.Р.Р.Толкин");
     Book book2 = new Book("Хоббит", 510, 400, "Дж.Р.Р.Толкин");
     Smartphone smartphone1 = new Smartphone("Груша", 20, 500, "Яблочный Стив");
     Smartphone smartphone2 = new Smartphone("Игровая подстанция 5", 60, 300, "Кони");
 
-        @Test
-    public void test1FindElements() {
-        ProductManager manager = new ProductManager();
+      @Test
+    public void FindAll() {
+
+        repo.save(book1);
+        repo.save(book2);
+        repo.save(smartphone1);
+        repo.save(smartphone2);
+
+        Product[] actual = repo.findAll();
+        Product[] expected = {book1, book2, smartphone1, smartphone2};
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void Remove() {
+        ProductRepository repo = new ProductRepository();
+        repo.save(book1);
+        repo.save(book2);
+        repo.save(smartphone1);
+        repo.save(smartphone2);
+
+        repo.removeById(505);
+
+        Product[] actual = repo.findAll();
+        Product[] expected = {book2, smartphone1, smartphone2};
+
+        assertArrayEquals(expected, actual);
+    }
+    @Test
+    public void test1Find() {
         manager.add(book1);
         manager.add(book2);
         manager.add(smartphone1);
@@ -28,10 +54,8 @@ class ProductRepositoryTest {
 
         assertArrayEquals(expected, actual);
     }
-
     @Test
-    public void test2FindElements() {
-        ProductManager manager = new ProductManager();
+    public void test2Find() {
         manager.add(book1);
         manager.add(book2);
         manager.add(smartphone1);
@@ -42,9 +66,9 @@ class ProductRepositoryTest {
 
         assertArrayEquals(expected, actual);
     }
+
     @Test
-    public void test4ShouldFindElements() {
-        ProductManager manager = new ProductManager();
+    public void test3Find() {
         manager.add(book1);
         manager.add(book2);
         manager.add(smartphone1);
@@ -57,8 +81,7 @@ class ProductRepositoryTest {
     }
 
     @Test
-    public void test5ShouldFindElements() {
-        ProductManager manager = new ProductManager();
+    public void test4Find() {
         manager.add(book1);
         manager.add(book2);
         manager.add(smartphone1);
@@ -71,8 +94,7 @@ class ProductRepositoryTest {
     }
 
     @Test
-    public void test6ShouldFindElements() {
-        ProductManager manager = new ProductManager();
+    public void test5Find() {
         manager.add(book1);
         manager.add(book2);
         manager.add(smartphone1);
